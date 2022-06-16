@@ -51,8 +51,6 @@ passport.deserializeUser(function (user, cb) { // this user is id + email + name
 
 //custom middleware
 const isLoggedIn = (req, res, next) => {
-
-
     if (req.isAuthenticated()) {
         return next();
     }

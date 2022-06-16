@@ -33,7 +33,7 @@ export default function LoginPage(props) {
 
   return (
       <div gap={2} className="back container col-md-5 mx-auto">
-        <i class="arrow bi bi-arrow-left-circle" onClick={() => navigate("/")}></i>
+        <i id="back_arrow" className="arrow bi bi-arrow-left-circle" onClick={() => navigate("/")}></i>
         <h1>Login</h1>
         <>
           <Form className="block-example rounded mb-0 form-padding" onSubmit={handleSubmit}>

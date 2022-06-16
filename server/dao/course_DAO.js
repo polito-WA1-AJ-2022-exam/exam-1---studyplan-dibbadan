@@ -19,11 +19,39 @@ class CourseDAO {
                 if (err) {
                     reject(503);
                 }
-                const courses = rows.map(row => new Course(row.Code, row.Name, row.Credits, row.Max_Students, row.Incompatible_Courses, row.Preparatory_Course));
+                const courses = rows.map(row => new Course(row.Code, row.Name, row.Credits, row.Max_Students, row.Enrolled_In, row.Incompatible_Courses, row.Preparatory_Course));
                 resolve(courses);
             })
         })
     
+    }
+
+    update_enrollments_DB(code) {
+        return new Promise((resolve, reject) => {
+
+            const sql = 'UPDATE COURSES SET Enrolled_In=Enrolled_In+1 WHERE Code=?'
+            this.#db.all(sql, [code], (err, rows) => {
+                if (err) {
+                    reject(503);
+                }
+                resolve(200);
+            })
+        })
+
+    }
+
+    unsubscribe_course_DB(code) {
+        return new Promise((resolve, reject) => {
+
+            const sql = 'UPDATE COURSES SET Enrolled_In=Enrolled_In-1 WHERE Code=?'
+            this.#db.all(sql, [code], (err, rows) => {
+                if (err) {
+                    reject(503);
+                }
+                resolve(200);
+            })
+        })
+
     }
 
 }

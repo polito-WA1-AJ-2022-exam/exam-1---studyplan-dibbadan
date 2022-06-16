@@ -3,31 +3,30 @@ import Course from './Course'
 import { Table } from 'react-bootstrap'
 
 export default function CoursesTable(props) {
-  
-  
-  return (
 
-    <Table bordered hover>
+
+  return (
+    <Table hover bordered>
       <thead>
         <tr>
           <th>Code</th>
-          <th>Name</th>
+          <th>Title</th>
           <th>Credits</th>
           <th>Max Students</th>
           <th>Enrolled In</th>
+          {props.mode === 'create' && <th>Actions</th>}
         </tr>
       </thead>
-
-      <tbody>
+        <tbody>
           {
             props.courses.map((course) =>
-                    <Course courseData={course} key={course.Code} Code={course.Code} />
-                
+              <Course mode={props.mode} courseData={course} key={course.id} />
             )
-          } 
-      </tbody>
+          }
+  
+        </tbody>
     </Table>
-               
+
   )
 }
 

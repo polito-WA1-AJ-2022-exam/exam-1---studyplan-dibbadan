@@ -65,9 +65,30 @@
   text-align: left;
 }
 
-.arrow {
+/* .arrow {
   cursor: pointer;
   font-size: 30px;
   color: #167bff;
+} */
+
+.selecting_row {
+  cursor: pointer;
+}
+
+.selectedCol {
+  background: green;
+}
+
+#back_arrow {
+  cursor: pointer;
+  font-size: 30px;
+  color: #167bff;
+}
+
+.bi {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+  color: yellow;
 }
 
