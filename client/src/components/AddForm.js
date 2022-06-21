@@ -51,10 +51,12 @@ export default function AddForm(props) {
 
     async function saveStudyPlan() {
         const old_sp = await API.getUserStudyPlan();
-        if (old_sp.length > 0) {
-            await API.destroyStudyPlan(old_sp);
-        }
-        const response = await API.addStudyPlan(studyPlan);
+        // if (old_sp.length > 0) {
+        //     await API.destroyStudyPlan(old_sp);
+        // }
+        // const response = await API.addStudyPlan(studyPlan);
+        const newSP = studyPlan.filter((c) => !old_sp.includes(c));
+        const response = await API.addStudyPlan(newSP);
         if (response) {
             studyPlan.forEach(async (c) => {
                 await API.updateEnrollments(c.Code);
@@ -62,9 +64,11 @@ export default function AddForm(props) {
         }
         if (response && props.hasStudyPlan === false) {
             props.setHasStudyPlan(true);
-            navigate('/my-study-plan')
+            // navigate('/my-study-plan')
+            navigate('/')
         } else {
-            navigate('/my-study-plan')
+            navigate('/')
+            // navigate('/my-study-plan')
         }
     }
 
@@ -249,6 +253,7 @@ export default function AddForm(props) {
         
 
         if (prep_courses.includes(code)) {
+            setCredits((old_credits) => old_credits - parseInt(course.Credits, 10)); // Added lastly
             setError(code);
             setMessage(`You cannot remove course ${code} because it is needed as preparatory course!`);
         } else {

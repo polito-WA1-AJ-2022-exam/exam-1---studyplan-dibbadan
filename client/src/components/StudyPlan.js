@@ -28,6 +28,7 @@ export default function StudyPlan(props) {
         const response = await API.destroyStudyPlan(myPlan);
         if (response) {
             setPlan([]);
+            window.location.reload();
         }
     }
 

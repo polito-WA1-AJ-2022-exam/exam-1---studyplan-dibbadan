@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
     getCourses();
-  }, [])
+  }, [hasStudyPlan])
 
   useEffect(() => {
     if(loggedIn) {
@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const user = await API.getUserInfo(); // we have the user info here
+      const user = await API.getUserInfo(); 
       setLoggedIn(true);
       setLoggedUser(user.id);
     };
@@ -77,6 +77,7 @@ function App() {
     await API.logOut();
     setLoggedIn(false);
     setMessage('');
+    window.location.reload();
   };
 
 
@@ -93,7 +94,7 @@ function App() {
           <Route path='/login' element={(loggedIn && !hasStudyPlan) ? <Navigate replace to='/'/> : <LoginPage handleLogin={handleLogin} message={message} setMessage={setMessage}/>}/>
           <Route path='/create' element={(loggedIn && !hasStudyPlan) && <CreatePlan  loggedUser={loggedUser} hasStudyPlan={hasStudyPlan} setHasStudyPlan={setHasStudyPlan} courses={courses}/> } />
           <Route path='/edit' element={(loggedIn && hasStudyPlan) && <CreatePlan mode={true} loggedUser={loggedUser} hasStudyPlan={hasStudyPlan} courses={courses}/> } />
-          <Route path='/my-study-plan' element={(loggedIn && hasStudyPlan) ? <StudyPlan/> : <Navigate replace to='/'/>}/>
+          {/* <Route path='/my-study-plan' element={(loggedIn && hasStudyPlan) ? <StudyPlan/> : <Navigate replace to='/'/>}/> */}
         </Routes>
       </BrowserRouter>
     </>
