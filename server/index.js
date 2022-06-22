@@ -98,8 +98,10 @@ app.get('/api/sessions/current', (req, res) => {
     if (req.isAuthenticated()) {
         res.json(req.user);
     }
-    else
-        res.status(401).json({ error: 'Not authenticated' });
+    else {
+        return res.status(401);
+    }
+        
 });
 
 // DELETE /api/session/current

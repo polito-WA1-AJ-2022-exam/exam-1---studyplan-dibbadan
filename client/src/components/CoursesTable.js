@@ -6,7 +6,8 @@ export default function CoursesTable(props) {
 
 
   return (
-    <Table hover bordered>
+    
+    <Table size='sm' responsive hover bordered>
       <thead>
         <tr>
           <th>Code</th>
@@ -14,18 +15,18 @@ export default function CoursesTable(props) {
           <th>Credits</th>
           <th>Max Students</th>
           <th>Enrolled In</th>
-          {props.mode === 'create' && <th>Actions</th>}
         </tr>
       </thead>
-        <tbody>
-          {
-            props.courses.map((course) =>
-              <Course mode={props.mode} courseData={course} key={course.id} />
-            )
-          }
-  
-        </tbody>
+      <tbody>
+        {
+          props.courses.map((course, index) =>
+            <Course courseData={course} key={index}/>
+          )
+        }
+
+      </tbody>
     </Table>
+    
 
   )
 }

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .App-header {
@@ -11,6 +12,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.container {
+  width: 100%;
 }
 
 .App-link {
@@ -65,11 +70,6 @@
   text-align: left;
 }
 
-/* .arrow {
-  cursor: pointer;
-  font-size: 30px;
-  color: #167bff;
-} */
 
 .selecting_row {
   cursor: pointer;

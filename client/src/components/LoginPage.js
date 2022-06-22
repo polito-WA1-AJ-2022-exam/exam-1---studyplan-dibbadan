@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import validator from 'validator'
-import { Form, Button, Stack, Container, Row, Alert } from 'react-bootstrap';
+import { Form, Button, Row, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage(props) {

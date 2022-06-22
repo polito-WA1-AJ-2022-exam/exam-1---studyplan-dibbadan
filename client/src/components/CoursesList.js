@@ -1,24 +1,21 @@
 import React, { useState } from 'react'
-import CourseRow from './CourseRow'
 import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.css";
 
 export default function CoursesList(props) {
 
-    function handle() {
-        props.setError('');
-        props.setMessage('');
-    }
 
     return (
         <>
+            
             {props.courses.map((c) => {
                 return (
-                    <>
+                    <React.Fragment key={c.Code}>
                         {
+                            
 
                             <tr
-                                key={c.Code}
+                                
                                 style={
                                     props.error === c.Code ? { 'background': 'red' } :
                                         props.selected.includes(c.Code) ? { 'background': 'green' } : { 'background': 'white' }}>
@@ -30,15 +27,16 @@ export default function CoursesList(props) {
                                 <td>
                                     <Button onClick={() => props.add(c)} variant='success'>Add</Button>
                                     <Button onClick={() => props.remove(c)} value={[c.Code, c.Credits]} style={{ 'marginLeft': 5 }} variant='danger'>Remove</Button>
-                                    {/* <Button onClick={props.remove} value={[c.Code, c.Credits]} style={{ 'marginLeft': 5 }} variant='danger'>Remove</Button> */}
                                     {props.error === c.Code && <OverlayTrigger
                                         overlay={
                                             <Tooltip>
                                                 {props.message}
+                                                {".\n"}
+                                                {"\n**CLICK TO HIDE**"}
                                             </Tooltip>
                                         }
                                     >
-                                        <i className="bi bi-question-diamond"></i>
+                                        <i onClick={(event) => { props.setError(''); props.setMessage('') }} className="bi bi-question-diamond"></i>
                                     </OverlayTrigger>}
                                 </td>
                             </tr>
@@ -46,7 +44,7 @@ export default function CoursesList(props) {
 
 
 
-                            // <CourseRow add={props.add} remove={props.remove} selected={props.selected} course={c} /> 
+
 
 
 
@@ -54,7 +52,7 @@ export default function CoursesList(props) {
                         }
 
 
-                    </>
+                    </React.Fragment>
                 )
 
             })}

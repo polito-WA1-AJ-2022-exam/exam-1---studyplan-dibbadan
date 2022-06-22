@@ -23,11 +23,11 @@ export default function AddedCourses(props) {
                         </Card.Header>
                     </Card>
 
-                    {props.studyPlan.map((c) => {
+                    {props.studyPlan.map((c, index) => {
                         return (
-                            <>
+                            
 
-                            <Card borderd='dark'>
+                            <Card key={index} borderd='dark'>
                                 <Card.Body>
                                     <Row>
 
@@ -49,7 +49,7 @@ export default function AddedCourses(props) {
                             </Card>
 
 
-                            </>
+                            
                         )
 
                     })}

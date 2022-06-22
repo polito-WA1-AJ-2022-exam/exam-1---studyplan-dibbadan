@@ -1,28 +1,36 @@
-# Exam #12345: "Exam Title"
+# Exam #1: "Study Plan"
 ## Student: s303470 DI BATTISTA DANIELE 
 
 ## React Client Application Routes
 
-- Route `/`: Home Page. Here the anonymous client will se the list of all courses offered by the University. The logged in user, if its plan exist, sees the plan at the top, with two buttons ( one to edit the plan and another one to completely delete the plan) and at the bottom the list of courses. If the user is logged in and the pland doesn't exist, he/she sees a button to create a new plan and the list of courses.
+- Route `/`: Home Page. Here the anonymous client will se the list of all courses offered by the University. The logged in user, if its plan exist, sees the plan at the top, with two buttons ( one to edit the plan and another one to completely delete the plan) and at the bottom the list of courses. If the user is logged in and the plan doesn't exist, he/she sees a button to create a new plan and the list of courses.
 - Route `/login`: Login Page
 - Route `/create`: Route which indicates the process of creation for the Study Plan. User will see the number of credits at the top ( min, max, actual ). Here user finds the list of courses with the possibility to Add and Remove a course from the Study Plan. If all conditions are satisfied, the 'Save' button will be enabled.
-- Route `/edit`: Route which indicates the process of modifying an exstisting Study Plan. Same as for create.
+- Route `/edit`: Route which indicates the process of modifying an existing Study Plan. Same as for create.
 
 ## API Server
 
+- POST `/api/sessions`
+  - Request object is used to call the login function.
+  - Response body will contains user information ( if login succesfully ) or wrong login message ( status code 401 ).
+- GET `/api/sessions/current`
+  - Request object is used to verify if the user is authenticated
+  - If user is authenticated, the response body will contains user information otherwise nothing ( status code 401 )
+- DELETE `/api/sessions/current`
+  - Request object is used to call the logout function.
 - POST `/api/login`
-  - request parameters and request body content
-  - response body content
+  - Request body will contain user credentials ( email and password )
+  - Response body will contain user information
 - GET `/courses`
-  - request parameters will contain only user information
-  - response body will contain the list of all courses
+  - Request parameters will contain only user information
+  - Response body will contain the list of all courses
 - PUT `/enroll/:code`
-  - request parameters will contain the Code of the course and the user information
-  - response body will contain the string 'Enrolled!' if the request was succesfully otherwise it will contain 'Something was wrong!'
+  - Request parameters will contain the Code of the course and the user information
+  - Response body will contain the string 'Enrolled!' if the request was succesfully otherwise it will contain 'Something was wrong!'
 - POST `/init` 
-  - request parameters will contain only user information. Request body will contain the selected option.
+  - Request parameters will contain only user information. Request body will contain the selected option.
   - Response body will contain 'Empty Study Plan created!' if status code is 201, otherwise 'You are not authenticated!' if status code is 401 or 'Something was wrong!' for anything else.
-- GET `/init` 
+- GET `/option` 
   - Request parameters will contain only user information.
   - Response body will contain the option if status code is 200, otherwise 'You are not authenticated!' if status code is 401 or 'Something was wrong!' for anything else.
 - GET `/studyPlan` 
@@ -33,7 +41,7 @@
   - Response body will contain the 'Study plan has been created!' if status code is 201, 'You are not authenticated!' if status code is 401, 'Study Plan is not valid! Cannot be created!' if status code is 422 or 'Something was wrong!' for anything else.
 - DELETE `/destroy` 
   - Request parameters will contain the Study Plan to delete and user information.
-  - Response body will contain the 'Destroyed!' if status code is 200, 'You are not authenticated!' if status code is 401, or 'Something was wrong!' for anything else.
+  - Response body will contain 'Destroyed!' if status code is 200, 'You are not authenticated!' if status code is 401, or 'Something was wrong!' for anything else.
    
 
 ## Database Tables
@@ -50,7 +58,6 @@
 - `CoursesList` (in `CoursesList.js`): This component is responsible to render all the courses in the context of the creation/edit process of the Study Plan. It highlights selected courses using a green color and, when the user try to add a course which doesn't respect the constraints it marks it with a red color and an icon which shows a tooltip with the error message.
 - `CreatePlan` (in `CreatePlan.js`): This component is rendered as the first action of the creation process. Here, the user can select one option between Full-Time and Part-Time ( if he/she doesn't select it before ). If the option is selected, the AddForm component takes place.
 
-(only _main_ components, minor ones may be skipped)
 
 ## Screenshot
 
@@ -61,3 +68,5 @@
 - lucas@polito.com, password
 - jacob@polito.com, password
 - hannah@polito.com, password
+- rose@polito.com, password
+- cesare@polito.com, password

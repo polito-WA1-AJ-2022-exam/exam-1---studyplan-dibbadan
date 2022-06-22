@@ -14,15 +14,14 @@ const studyplan_dao = new StudyPlanDAO();
 const studyplan_service = new StudyPlan_Service(studyplan_dao);
 
 
+
 router.get("/courses", course_service.get_courses);
+router.put("/enroll/:code", course_service.update_enrollments);
+
 router.post("/init", studyplan_service.studyPlan_init);
 router.get("/option", studyplan_service.get_option);
 router.get("/studyplan", studyplan_service.get_studyPlan);
 router.post("/newStudyPlan", studyplan_service.post_studyPlan);
-// router.delete("/removeCourseSP/:code", studyplan_service.remove_course_from_sp);
-router.put("/confirm", studyplan_service.confirm_studyPlan);
-router.put("/enroll/:code", course_service.update_enrollments);
-router.put("/unsubscribe/:code", course_service.unsubscribe_course);
 router.delete("/destroy", studyplan_service.destroy_studyPlan);
 
 

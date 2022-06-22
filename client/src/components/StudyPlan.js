@@ -4,14 +4,12 @@ import AddedCourses from './AddedCourses'
 import API from '../API';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AlertModal from './AlertModal';
 
 export default function StudyPlan(props) {
 
     const navigate = useNavigate();
 
     const [myPlan, setPlan] = useState([]);
-    const [modalShow, setModalShow] = useState(false);
 
     async function getStudyPlan() {
         const studyPlan = await API.getUserStudyPlan();
@@ -22,8 +20,6 @@ export default function StudyPlan(props) {
     }
 
     async function destroyPlan() {
-
-        // setModalShow(true);
 
         const response = await API.destroyStudyPlan(myPlan);
         if (response) {
@@ -40,23 +36,12 @@ export default function StudyPlan(props) {
 
     return (
         <>
-            {modalShow &&
-
-                <AlertModal
-                    message="Attention! This will destroy the StudyPlan!"
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
-
-
-            }
-
 
             <div className='container mt-5 mb-5 ml-auto'>
                 <tr>
                     <td>
                         <Button onClick={() => navigate('/edit')} variant='warning'>Edit Plan</Button>
-                        
+
                         <Button disabled={myPlan.length === 0 ? true : false} style={{ 'marginLeft': 5 }} onClick={destroyPlan} variant='danger'>Destroy Plan</Button>
                     </td>
                 </tr>

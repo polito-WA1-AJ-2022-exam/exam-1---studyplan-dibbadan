@@ -1,3 +1,5 @@
+'use strict'
+
 function Course(Code, Name, Credits, Max_Students, Enrolled_In, Incompatible_Courses, Preparatory_Course) {
     this.Code = Code;
     this.Name = Name;

@@ -1,3 +1,5 @@
+'use strict'
+
 const CourseDAO = require('./dao/course_DAO');
 const course_dao = new CourseDAO();
 
@@ -21,8 +23,9 @@ function check_incompatibility(studyPlan) {
     
     
     studyPlan.forEach((c) => {
-        if(c.Incompatible_Courses !== null) {
-            c.Incompatible_Courses.forEach((inc) => {
+        console.log("INC = ", c.Incompatible_Courses)
+        if(!isNull(c.Incompatible_Courses)) {
+            c.Incompatible_Courses?.forEach((inc) => {
                 incompatible_courses.push(inc);
             })
         }
@@ -49,5 +52,7 @@ async function check_enrollment(studyPlan) {
             }
         })
 }
+
+const isNull = (value) => typeof value === "object" && !value
 
 module.exports = {validatePlan}

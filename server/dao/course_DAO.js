@@ -53,20 +53,6 @@ class CourseDAO {
 
     }
 
-    unsubscribe_course_DB(code) {
-        return new Promise((resolve, reject) => {
-
-            const sql = 'UPDATE COURSES SET Enrolled_In=Enrolled_In-1 WHERE Code=?'
-            this.#db.all(sql, [code], (err, rows) => {
-                if (err) {
-                    reject(503);
-                }
-                resolve(200);
-            })
-        })
-
-    }
-
 }
 
 module.exports = CourseDAO;
