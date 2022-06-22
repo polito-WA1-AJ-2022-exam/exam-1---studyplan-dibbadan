@@ -59,30 +59,3 @@ export default function Course(props) {
 }
 
 
-/*
-<tr>
-                
-                 <Table bordered> 
-                     <thead> 
-                        <td>
-                            <th>Incompatible with</th>
-                            <th>Preparatory course</th>
-                        </td>
-                     </thead> 
-                     <tbody> 
-                        <tr>
-                            <td>
-                                 <td> 
-                                 <tr> 
-                                    {props.courseData.Incompatible_Courses && props.courseData.Incompatible_Courses.map((c) => { return (<>{c}</>) })}
-                                 </tr> 
-                            </td>
-
-                            <td>
-                                <strong>{props.courseData.Preparatory_Course}</strong>
-                            </td>
-
-                        </tr>
-                     </tbody> 
-                 </Table> 
-            </tr>*/

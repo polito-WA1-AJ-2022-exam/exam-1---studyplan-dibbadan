@@ -41,7 +41,6 @@ class CourseDAO {
 
     update_enrollments_DB(code) {
         return new Promise((resolve, reject) => {
-            console.log("CODE N = ", code);
             const sql = 'UPDATE COURSES SET Enrolled_In=Enrolled_In+1 WHERE Code=?'
             this.#db.all(sql, [code], (err, rows) => {
                 if (err) {

@@ -83,7 +83,7 @@ class StudyPlanDAO {
 
         return new Promise((resolve, reject) => {
 
-            console.log("CIAO");
+            
 
             studyPlan.forEach((course) => {
                 const sql = 'INSERT INTO STUDY_PLAN(userID, courseCode) VALUES(?,?);'

@@ -23,7 +23,6 @@ function check_incompatibility(studyPlan) {
     
     
     studyPlan.forEach((c) => {
-        console.log("INC = ", c.Incompatible_Courses)
         if(!isNull(c.Incompatible_Courses)) {
             c.Incompatible_Courses?.forEach((inc) => {
                 incompatible_courses.push(inc);
