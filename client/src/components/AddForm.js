@@ -46,9 +46,7 @@ export default function AddForm(props) {
 
     async function saveStudyPlan() {
         const old_sp = await API.getUserStudyPlan();
-        console.log("OLD SP = ", old_sp);
         await API.destroyStudyPlan(old_sp);
-        console.log("SELECTED COURSES = ", selected);
         const response = await API.addStudyPlan(studyPlan);
         if (response) {
             
@@ -183,13 +181,13 @@ export default function AddForm(props) {
         const creds = course.Credits;
 
 
-        if (error == '') {
+        if (error === '') {
             setStudyPlan(studyPlan.filter((c) => { return c.Code !== code }));
 
 
 
             let new_credits = 0;
-            if (credits > 0 && error == '' && selected.includes(code)) {
+            if (credits > 0 && error === '' && selected.includes(code)) {
                 new_credits = credits - parseInt(creds, 10);
                 setCredits(new_credits);
             }
@@ -242,8 +240,7 @@ export default function AddForm(props) {
 
 
                 
-               
-                    <Table  size='sm' responsive bordered hover >
+                    <Table size='sm' responsive bordered hover >
 
                         <thead>
                             <tr>

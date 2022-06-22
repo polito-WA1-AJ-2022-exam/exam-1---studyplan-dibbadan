@@ -49,7 +49,7 @@ function App() {
     if(loggedIn) {
       getHasSP();
     }
-  })
+  },[loggedIn])
 
 
   useEffect(() => {

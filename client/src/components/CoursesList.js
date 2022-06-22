@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -26,7 +26,7 @@ export default function CoursesList(props) {
                                 <td>{c.Enrolled_In}</td>
                                 <td>
                                     <Button onClick={() => props.add(c)} variant='success'>Add</Button>
-                                    <Button onClick={() => props.remove(c)} value={[c.Code, c.Credits]} style={{ 'marginLeft': 5 }} variant='danger'>Remove</Button>
+                                    <Button className='rem_btn' onClick={() => props.remove(c)} value={[c.Code, c.Credits]} style={{ 'marginLeft':'5'}} variant='danger'>Remove</Button>
                                     {props.error === c.Code && <OverlayTrigger
                                         overlay={
                                             <Tooltip>
